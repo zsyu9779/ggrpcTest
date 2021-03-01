@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
-	"grpcTest/services"
+	"grpcTest/server/services"
 	"log"
 	"net/http"
 )
@@ -17,6 +17,7 @@ func main()  {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	rpcServer := grpc.NewServer(grpc.Creds(creds))
 	services.RegisterProdServiceServer(rpcServer,new(services.ProdService))
 	//lis,_ := net.Listen("tcp",":8081")
